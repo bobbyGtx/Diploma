@@ -1,0 +1,127 @@
+@import "../../../../assets/styles/_variables.scss";
+:root {
+  --scaleX: 1;
+}
+.overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: $modal-shadow-color;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .loader {
+    width: 160px;
+    height: 160px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .loader-pin {
+      position: absolute;
+      width: 44px;
+      height: 14px;
+      transform: scaleX(var(--scaleX));
+      border-radius: 15px;
+      background-color: transparent;
+      /*background-color: rgb(45, 80, 167);*/
+      transition: background-color;
+    }
+
+    .loader-pin:nth-child(1) {
+      top: 15px;
+      transform: scaleY(var(--scaleX)) rotate(90deg);
+      left: calc(50% - 22px);
+      animation: loader 1200ms infinite 0ms linear;
+    }
+
+    .loader-pin:nth-child(2) {
+      transform: scaleY(var(--scaleX)) scaleX(var(--scaleX)) rotate(135deg);
+      top: 31px;
+      right: 17px;
+      animation: loader 1200ms infinite 150ms linear;
+    }
+
+    .loader-pin:nth-child(3) {
+      top: calc(50% - 5px);
+      right: 0;
+      animation: loader 1200ms infinite 300ms linear;
+    }
+
+    .loader-pin:nth-child(4) {
+      transform: scaleY(var(--scaleX)) scaleX(var(--scaleX)) rotate(45deg);
+      bottom: 31px;
+      right: 17px;
+      animation: loader 1200ms infinite 450ms linear;
+    }
+
+    .loader-pin:nth-child(5) {
+      transform: rotate(90deg);
+      bottom: 15px;
+      left: calc(50% - 22px);
+      animation: loader 1200ms infinite 600ms linear;
+    }
+
+    .loader-pin:nth-child(6) {
+      transform: scaleY(var(--scaleX)) scaleX(var(--scaleX)) rotate(135deg);
+      bottom: 31px;
+      left: 17px;
+      animation: loader 1200ms infinite 750ms linear;
+    }
+
+    .loader-pin:nth-child(7) {
+      top: calc(50% - 5px);
+      left: 0;
+      animation: loader 1200ms infinite 900ms linear;
+    }
+
+    .loader-pin:nth-child(8) {
+      transform: scaleY(var(--scaleX)) scaleX(var(--scaleX)) rotate(45deg);
+      top: 31px;
+      left: 17px;
+      animation: loader 1200ms infinite 1050ms linear;
+    }
+  }
+}
+
+@keyframes loader{
+  0%{
+    background-color: rgb(45, 80, 167);
+    --scaleX: 1;
+  }
+  12.5%{
+    background-color: rgb(53,94,201);
+    --scaleX: 1;
+  }
+  25%{
+    background-color: rgb(61,109,235);
+    --scaleX: 1;
+  }
+  37.5%{
+    background-color: rgb(82,134,250);
+    --scaleX: 1;
+  }
+  50%{
+    background-color: rgb(115,161,251);
+    --scaleX: 1;
+  }
+  62.5%{
+    background-color: rgb(196,217,253);
+    --scaleX: 1;
+  }
+  75%{
+    background-color: rgb(196,217,253);
+    --scaleX: 1;
+  }
+  87.5%{
+    background-color: transparent;
+    --scaleX: 0.6;
+  }
+  100%{
+    background-color: transparent;
+    --scaleX: 1;
+  }
+}

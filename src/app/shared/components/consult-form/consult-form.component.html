@@ -1,0 +1,49 @@
+<div class="modal-window" *ngIf="isShowed">
+  <div class="modal-container" [class.thank]="requestAccepted">
+    <div class="close-btn" (click)="closeModal()">
+      <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <line x1="1.93562" y1="2.6499" x2="13.9564" y2="14.6707" stroke-linecap="round"/>
+        <line x1="13.9236" y1="2.62971" x2="1.90277" y2="14.6505" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="modal-header" [class.thank]="requestAccepted">
+      <span *ngIf="!recall && !requestAccepted">Заявка на услугу</span>
+      <span *ngIf="recall && !requestAccepted">Закажите бесплатную консультацию!</span>
+      <span *ngIf="requestAccepted">Спасибо за вашу заявку!</span>
+    </div>
+    <div class="modal-form" [formGroup]="consultForm">
+      <div *ngIf="!requestAccepted" class="form-inputs">
+        <div class="form-input">
+          <mat-form-field *ngIf="!recall && !requestAccepted" appearance="fill" class="select-input"
+                          >
+            <mat-label>Услуга</mat-label>
+            <mat-select formControlName="serviceName">
+              <!--              <mat-option value="option">Создание сайтов</mat-option>-->
+              <!--              <mat-option value="option">Продвижение</mat-option>-->
+              <!--              <mat-option value="option">Реклама</mat-option>-->
+              <!--              <mat-option value="option">Копирайтинг</mat-option>-->
+              <mat-option *ngFor="let serviceItem of servicesList" value="{{serviceItem.val}}">{{ serviceItem.text }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-input"  [class.is-invalid]="userName?.invalid &&(userName?.touched || userName?.dirty)">
+          <input type="text" class="input" placeholder="Ваше имя*" formControlName="userName">
+        </div>
+        <div class="form-input" [class.is-invalid]="userPhone?.invalid &&(userPhone?.touched || userPhone?.dirty)">
+          <input type="text" class="input" placeholder="Ваш номер телефона*" formControlName="userPhone" title="Телефон в формате +79773737373 или +7 (977) 373 73 73" (keydown)="flyphone($event)">
+        </div>
+      </div>
+      <div class="modal-form-message" *ngIf="requestAccepted">
+        Мы свяжемся с вами при первой же возможности.
+      </div>
+      <div class="form-actions">
+        <button *ngIf="!recall && !requestAccepted" [disabled]="consultForm.invalid" (click)="createRequest()" class="btn big">Оставить заявку</button>
+        <button *ngIf="recall && !requestAccepted" class="btn big" [disabled]="consultForm.invalid" (click)="createRequest()">Заказать консультацию</button>
+        <button *ngIf="requestAccepted" class="btn ok-btn" (click)="closeModal()">Окей</button>
+        <span *ngIf="requestFailed"
+              class="request-error">*Произошла ошибка при отправке формы, попробуйте ещё раз</span>
+      </div>
+    </div>
+  </div>
+</div>

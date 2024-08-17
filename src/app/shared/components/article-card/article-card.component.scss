@@ -1,0 +1,61 @@
+@import "../../../../assets/styles/_variables.scss";
+@import "../../../../assets/styles/_mixins.scss";
+.article-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 291px;
+  height: 100%;
+
+  .article-card-data{
+    .article-card-data-image{
+      width: 291px;
+      height: 291px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+      margin-bottom: 15px;
+      .article-type{
+        padding:10px 18px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11px;
+        color: $header-font-color;
+        border-radius: 5px;
+        background-color: $article-badge-bg-color;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: default;
+      }
+    }
+    .article-card-data-header{
+      margin-bottom: 20px;
+      a{
+        text-decoration: none;
+        @include head-montserrat($font-size:20px);
+        font-weight: 500;
+        line-height: 130%;
+      }
+    }
+    .article-card-data-text{
+      font-size: 14px;
+      line-height: 130%;
+      color: $dark-font-color;
+      margin-bottom: 20px;
+    }
+  }
+  .article-card-action{
+    display: flex;
+    a{
+      //display: flex;
+      color: $header-font-color;
+      text-decoration: none;
+      line-height: 1;
+      &:visited{
+        color: $header-font-color;
+      }
+      border-bottom: 1px solid $header-font-color;
+    }
+  }
+}

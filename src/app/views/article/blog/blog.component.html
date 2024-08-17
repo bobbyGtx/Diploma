@@ -1,0 +1,63 @@
+<section class="blog">
+  <div class="container">
+    <div class="blog-content">
+      <div class="blog-title">Блог</div>
+      <div class="blog-header">
+        <div class="active-filters">
+          <div class="filter-item" *ngFor="let appliedFilter of activeParams.categories">
+            <span class="item-caption">{{appliedFilter.name}}</span>
+            <span class="close-button" (click)="deleteFilterParam(appliedFilter.url)">
+            <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0.935531" y1="1.15002" x2="12.9563" y2="13.1708" stroke-linecap="round"/>
+              <line x1="12.9236" y1="1.12984" x2="0.902784" y2="13.1507" stroke-linecap="round"/>
+            </svg>
+          </span>
+          </div>
+        </div>
+        <div class="filter-selector" *ngIf="categories" [class.open]="openFilter">
+          <div class="filter-selector-head" (click)="toggle()">
+            <span class="filter-selector-title">Фильтр</span>
+            <span class="filter-selector-icon">
+              <svg *ngIf="!openFilter" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10 14.5C9.41668 14.5 8.83335 14.275 8.39168 13.8334L2.95835 8.40003C2.71668 8.15837 2.71668 7.75837 2.95835 7.5167C3.20002 7.27503 3.60002 7.27503 3.84168 7.5167L9.27502 12.95C9.67502 13.35 10.325 13.35 10.725 12.95L16.1583 7.5167C16.4 7.27503 16.8 7.27503 17.0417 7.5167C17.2833 7.75837 17.2833 8.15837 17.0417 8.40003L11.6083 13.8334C11.1667 14.275 10.5833 14.5 10 14.5Z"
+                fill="#071739"/>
+              </svg>
+              <svg *ngIf="openFilter" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M9.99998 5.99997C10.5833 5.99997 11.1667 6.22497 11.6083 6.66663L17.0417 12.1C17.2833 12.3416 17.2833 12.7416 17.0417 12.9833C16.8 13.225 16.4 13.225 16.1583 12.9833L10.725 7.54997C10.325 7.14997 9.67498 7.14997 9.27498 7.54997L3.84165 12.9833C3.59999 13.225 3.19998 13.225 2.95832 12.9833C2.71665 12.7416 2.71665 12.3416 2.95832 12.1L8.39165 6.66663C8.83332 6.22497 9.41665 5.99997 9.99998 5.99997Z"
+                fill="#071739"/>
+              </svg>
+            </span>
+          </div>
+          <div class="filter-selector-body">
+            <div class="filter-selector-item" *ngFor="let category of categories">
+                <a class="filter-selector-object" [class.active]="category.selected" (click)="updateFilterParams(category)">
+                  {{ category.name }}
+                  <span class="plus filter-selector-object">+</span>
+                  <span class="minus filter-selector-object">-</span>
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="articles-content">
+        <div class="null-articles" *ngIf="!articles">Статьи сответствующие выбранным фильтрам отсутствуют.</div>
+        <div class="blog-articles-list" *ngIf="articles">
+          <article-card *ngFor="let article of articles.items" [article]="article"></article-card>
+        </div>
+      </div>
+      <div class="blog-pagination" *ngIf="articles && pages.length>1">
+        <div class="pagination-arrow prev-arrow " [class.disabled]="activeParams.page ? activeParams.page === 1 : true" (click)="openPrevPage()">
+        </div>
+        <div class="pagination-pages">
+          <a class="pagination-page" (click)="openPage(page)" [class.active]="activeParams.page ? activeParams.page===page : (page === 1)" *ngFor="let page of pages">{{ page }}</a><!--active-->
+        </div>
+        <div class="pagination-arrow next-arrow" [class.disabled]="activeParams.page ? activeParams.page === pages.length : false" (click)="openNextPage()">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

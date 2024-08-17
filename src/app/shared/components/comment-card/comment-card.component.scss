@@ -1,0 +1,100 @@
+@import "../../../../assets/styles/_variables.scss";
+@import "../../../../assets/styles/_mixins.scss";
+
+.comment-card{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  line-height: 130%;
+  max-width: 854px;
+  .comment-header{
+    display: flex;
+    gap: 26px;
+    margin-bottom: 15px;
+    .header-avatar{
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      svg{
+        width: 100%;
+        height: 100%;
+      }
+
+    }
+    .header-info{
+      font-weight: 600;
+      .comment-owner-name{
+        @include head-montserrat($font-size:18px);
+        margin-bottom: 10px;
+      }
+      .comment-date{
+        color:$comment-date-color;
+
+      }
+    }
+  }
+  .comment-body{
+    color:$main-font-color;
+    font-weight: 400;
+    margin-bottom: 39px;
+  }
+  .comment-footer{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 600;
+    line-height: 1;
+    .comment-reaction{
+      display: flex;
+      gap: 3px;
+      align-items: center;
+      .reaction-icon{
+        width: 24px;
+        height: 24px;
+        svg{
+          stroke: $reaction-base-color;
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+          &:hover {
+            stroke: $reaction-hover-color;
+          }
+        }
+      }
+      &.active{
+        color: $reaction-active-color;
+        .reaction-icon{
+          svg{
+            stroke: $reaction-active-color;
+            &:hover{
+              stroke: $reaction-hover-color;
+            }
+          }
+        }
+      }
+    }
+    .comment-report{
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      svg{
+        width: 100%;
+        height: 100%;
+        stroke: $reaction-base-color;
+        &:hover{
+          stroke: $reaction-hover-color;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 632px){
+  .comment-card{
+    font-size: 12px;
+  }
+}

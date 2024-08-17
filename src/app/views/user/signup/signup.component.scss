@@ -1,0 +1,80 @@
+@import "../../../../assets/styles/_variables.scss";
+@import "../../../../assets/styles/_auth-pages.scss";
+
+.signup {
+  .container {
+    .form-container {
+      padding: 120px 5px;
+      .user-form{
+        padding-top: 0;
+        .form-input {
+          .custom-checkbox {
+            & + label {
+              display: inline;
+              align-items: baseline;
+              line-height: 130%;
+
+              a {
+                color: $header-font-color;
+                text-decoration: underline;
+                text-underline-offset: 2px;
+              }
+
+              &::before {
+                top: 4px;
+              }
+            }
+          }
+        }
+      }
+
+      .form-image{
+        padding-top: 3px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1300px){
+  .signup {
+    .container {
+      .form-container {
+        padding: 92px 0;
+
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px){
+  .signup {
+    .container {
+      .form-container {
+        padding: 20px 0 60px 0;
+        .form-image{
+          top: 76px;
+        }
+
+      }
+    }
+  }
+}
+@media screen and (max-width: 411px){
+  .form-container{
+    .form-image{
+      top: 76px;
+    }
+    .user-form{
+      .form-title{
+        margin-bottom: 196px;
+      }
+
+    }
+  }
+}
+@media screen and (max-width: 366px){
+  .form-container{
+    .form-image{
+      top: 118px;
+    }
+  }
+}

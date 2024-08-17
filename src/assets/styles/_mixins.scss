@@ -1,0 +1,13 @@
+@import 'variables';
+@mixin head-lora($font-size:32px){
+  color: $header-font-color;
+  font-family: 'Lora',sans-serif;
+  font-size: $font-size;
+  font-weight: 400;
+}
+@mixin head-montserrat($font-size:32px){
+  color: $header-font-color;
+  font-family: 'Montserrat',sans-serif;
+  font-size: $font-size;
+  font-weight: 400;
+}

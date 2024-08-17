@@ -1,0 +1,484 @@
+@import "variables";
+@import "mixins";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+
+  .logo {
+    flex-shrink: 0;
+    width: 85px;
+    height: 47px;
+
+    .logo-link {
+      text-decoration: none;
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.double-color {
+  span {
+    color: $header-font-color
+  }
+}
+
+.double-style {
+  span {
+    font-weight: 500;
+  }
+}
+
+.btn {
+  padding: 10px 20px 6px 20px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: $header-font-color;
+  color: $button-font-color;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  border-bottom: 4px solid transparent;
+
+  &.big {
+    padding: 15px 15px 11px 15px;
+    width: 100%;
+    line-height: 130%;
+  }
+
+  &.ok-btn {
+    width: 73px;
+    padding: 10px 20px 7px 20px;
+    font-size: 12px;
+  }
+
+  &.banner-btn {
+    padding: 16px 33px 12px 33px;
+  }
+
+  &:hover:not(:disabled) {
+    border-bottom: 4px solid $main-font-color;
+    box-shadow: 0 10px 13px -7px $main-font-color, 0 9px 10px 3px rgba(7, 23, 57, 0);
+    transition: all 0.3s ease;
+  }
+
+  &:disabled {
+    background: gray;
+    cursor: not-allowed;
+  }
+
+}
+
+.input {
+  border: 2px solid $input-border-color;
+  border-radius: 3px;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: $input-font-color;
+
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:read-only {
+    color: $input-placeholder-color;
+  }
+}
+
+.form-input {
+  &.password {
+    position: relative;
+
+    input {
+      padding-right: 50px;
+      -ms-padding-right:20px;
+    }
+
+    .pass-visible {
+      -ms-display:none;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: calc(50% - 12px);
+      right: 30px;
+
+      svg {
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        stroke: $input-border-color;
+
+        &:hover {
+          stroke: $main-font-color;
+        }
+      }
+
+    }
+  }
+  &.is-invalid{
+    [type="text"], [type="password"] {
+      border-color: $error-color;
+    }
+    &.password {
+      border-color: $error-color;
+      .pass-visible {
+        svg {
+          stroke: $error-color;
+
+          &:hover {
+            stroke: $main-font-color;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+[type="checkbox"] {
+  display: none;
+
+  & ~ label {
+    //left:15px;
+    font-size: 14px;
+    cursor: pointer;
+    color: $dark-font-color;
+  }
+}
+
+.custom-checkbox + label {
+  position: relative;
+  margin-top: 5px;
+  padding-left: 24px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+    border: 1px solid $dark-font-color;
+    border-radius: 3px;
+  }
+
+}
+
+.custom-checkbox:checked + label {
+  &::before {
+    border-color: $dark-font-color;
+    background-image: url('../../assets/images/icons/checkbox_checked.png');
+    background-size: contain;
+  }
+}
+
+.select-input {
+  border: 2px solid $input-border-color;
+  border-radius: 3px;
+  box-sizing: border-box;
+  //настройки селектбокса
+  &.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: transparent;
+    padding: 10px 20px 0 20px !important;
+  }
+
+  //Плейсхолдер
+  .mat-form-field-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $input-placeholder-color;
+  }
+
+  //корректировка позиции плейсхолдера
+  .mat-form-field-label-wrapper {
+    top: -0.64375em;
+  }
+
+  //Выбранное значение в поле
+  .mat-select-value {
+    color: $input-font-color !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  //отступ селект поля снизу
+  .mat-form-field-infix {
+    padding-bottom: 7px;
+  }
+
+  //удаление дополнительного отступа снизу
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+
+  //отключение подчеркивания в стиле материал
+  .mat-form-field-underline {
+    display: none;
+  }
+
+  //наведение мыши на селект
+  &:hover {
+    .mat-select-arrow {
+      color: $input-border-color;
+    }
+  }
+}
+
+//настройки выпадающего списка селектбокса
+.mat-option {
+  background-color: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px !important;
+  font-weight: 400;
+  color: $dark-font-color;
+
+  &.mat-active {
+    background: $option-active-color !important;
+    color: $input-font-color;
+  }
+
+  &:hover {
+    background-color: $option-hover-color !important;
+  }
+}
+
+//Настройки маленького мат меню с навигацией
+.mat-button-wrapper {
+  .mat-icon {
+    color: $main-font-color;
+  }
+}
+
+//Настройки снэкбара
+.mat-snack-bar-container {
+  background: #709FDC;
+  color: $white-font-color;
+
+  .mat-button-wrapper {
+    color: $main-font-color;
+  }
+
+  .mat-button-focus-overlay {
+    border-radius: 50%;
+  }
+}
+
+.mat-menu-content {
+  button {
+    padding: 0 16px;
+    text-align: start;
+    border: 0;
+    background: transparent;
+    height: 32px;
+    width: 100%;
+    cursor: pointer;
+
+    &.active {
+      color: $bread-active-color;
+      font-weight: 500;
+
+    }
+
+    &:hover {
+      background-color: $option-hover-color;
+    }
+  }
+}
+
+.owl-carousel.owl-theme.owl-loaded {
+  .owl-dots {
+    position: absolute;
+    margin-top: 0;
+    bottom: 11px;
+    left: calc(50% - 45px);
+
+    .owl-dot {
+      span {
+        background: transparent;
+        border: 1px solid $white-font-color;
+        width: 10px;
+        height: 10px;
+        box-sizing: border-box;
+        margin: 5px 10px;
+
+        &:hover {
+          border: 1px solid $header-font-color;
+        }
+      }
+
+      &.active {
+        span {
+          background: $white-font-color;
+
+          &:hover {
+            border: 1px solid $header-font-color;
+            background: $header-font-color;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+.main-feedback {
+  .owl-carousel.owl-theme.owl-loaded {
+    .owl-dots {
+      display: none;
+      position: absolute;
+      margin-top: 0;
+      bottom: -22px;
+      left: calc(50% - 24px);
+
+      .owl-dot {
+        span {
+          background: transparent;
+          border: 1px solid $dark-font-color;
+          width: 6px;
+          height: 6px;
+          margin: 4px 5px;
+
+          &:hover {
+            border: 1px solid $header-font-color;
+          }
+        }
+
+        &.active {
+          span {
+            background: $main-bg-color;
+
+            &:hover {
+              border: 1px solid $header-font-color;
+              background: $header-font-color;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+.mat-menu-panel {
+  min-height: 47px !important;
+
+  .mat-menu-item {
+    line-height: 1;
+    height: 32px;
+
+    button {
+      &.active {
+        color: $bread-active-color;
+        background: transparent;
+        border: 0;
+        height: 32px;
+      }
+    }
+
+    &:hover {
+      background-color: $option-hover-color;
+    }
+  }
+}
+
+
+//Стили для текста с бэкэнда на компонента article
+.article-data {
+  .article-text {
+    h3 {
+      @include head-montserrat($font-size: 20px);
+      line-height: 130%;
+      font-weight: 500;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      text-align: start;
+    }
+
+    p {
+      margin-bottom: 20px;
+      margin-top: 0;
+    }
+  }
+}
+
+.mat-mdc-snack-bar-container:not([mat-exit]) {
+  color: red !important;
+}
+
+@media screen and (max-width: 1300px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .main-banners {
+    .owl-carousel.owl-theme.owl-loaded {
+      .owl-dots {
+        position: absolute;
+        margin-top: 0;
+        bottom: -2px;
+        left: calc(50% - 27px);
+
+        .owl-dot span {
+          width: 6px;
+          height: 6px;
+          margin: 4px 5px;
+        }
+
+      }
+    }
+  }
+}
+//Адаптив для текста с бэкэнда на компонента article
+@media screen and (max-width: 632px){
+  .article-data {
+    .article-text {
+      h3 {
+        font-size: 15px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 492px) {
+  .main-feedback {
+    .owl-carousel.owl-theme.owl-loaded {
+      .owl-dots {
+        display: block;
+      }
+    }
+  }
+}
+
