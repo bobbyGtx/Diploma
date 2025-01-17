@@ -1,0 +1,12 @@
+@media screen and (max-width: 600px){
+  .modal-window{
+    .modal-container{
+      padding: 94px 15px 86px 15px;
+      width: 100%;
+      .close-btn{
+        top: 20px;
+        right: 20px;
+      }
+    }
+  }
+}

@@ -14,7 +14,7 @@ import {Subscription} from "rxjs";
 @Component({
   selector: 'app-consult-form',
   templateUrl: './consult-form.component.html',
-  styleUrls: ['./consult-form.component.scss'],
+  styleUrls: ['./consult-form.component.scss','./consult-form-adaptive.component.scss'],
 })
 export class ConsultFormComponent implements OnInit, OnDestroy {
   private subscription$: Subscription = new Subscription();
